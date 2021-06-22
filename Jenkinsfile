@@ -2,7 +2,8 @@ pipeline {
 
     agent {
         label 'master'
-        docker { image 'node:14-alpine' }
+        dockerfile true
+        
     }
 
     environment {
@@ -10,14 +11,7 @@ pipeline {
         registry = "docker.io"
     }
     
-     stages {
-        stage('Test') {
-            steps {
-                sh 'node --version'
-            }
-        }
-    }
-
+     
     stages {
 
         stage('Checkout') {
