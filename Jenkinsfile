@@ -2,11 +2,20 @@ pipeline {
 
     agent {
         label 'master'
+        docker { image 'node:14-alpine' }
     }
 
     environment {
         image = "atisak/demo-nodejs"
         registry = "docker.io"
+    }
+    
+     stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
     }
 
     stages {
